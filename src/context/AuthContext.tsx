@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { useStore } from "./StoreContext";
+import { useStore, type Row } from "./StoreContext";
 
 export type AuthUser = { id: string; name: string; email: string; role: "admin" | "user"; employeeId?: string };
 type Ctx = {
@@ -7,6 +7,7 @@ type Ctx = {
   ready: boolean;
   login: (email: string, password: string, role: "admin" | "user") => string | null;
   register: (name: string, email: string, password: string) => string | null;
+  switchUser: (u: Row) => void;
   logout: () => void;
 };
 const AuthCtx = createContext<Ctx | null>(null);
@@ -34,13 +35,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     persist({ id: u.id, name: u.name, email: u.email, role: u.role, employeeId: u.employeeId });
     return null;
   };
+
   const register: Ctx["register"] = (name, email, password) => {
     if (state.users.some((x) => x.email.toLowerCase() === email.toLowerCase())) return "An account with this email already exists";
     const u = add("users", { name, email, password, role: "user", status: "Active", employeeId: "" });
     persist({ id: u.id, name, email, role: "user" });
     return null;
   };
-  return <AuthCtx.Provider value={{ user, ready, login, register, logout: () => persist(null) }}>{children}</AuthCtx.Provider>;
+
+  const switchUser: Ctx["switchUser"] = (u) => {
+    persist({ id: u.id, name: u.name, email: u.email, role: u.role, employeeId: u.employeeId });
+  };
+
+  return (
+    <AuthCtx.Provider value={{ user, ready, login, register, switchUser, logout: () => persist(null) }}>
+      {children}
+    </AuthCtx.Provider>
+  );
 }
 
 export function useAuth() {
