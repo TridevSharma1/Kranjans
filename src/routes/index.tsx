@@ -4,6 +4,7 @@ import { SiteLayout } from "@/layouts/SiteLayout";
 import { SectionHeading, Counter, Badge, EmptyState } from "@/components/ui";
 import { Icon } from "@/components/Icon";
 import { useStore } from "@/context/StoreContext";
+import * as seed from "@/data/seed";
 import { img } from "@/utils/images";
 import hero from "@/assets/hero.jpg";
 
@@ -23,9 +24,14 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const { state } = useStore();
-  const programs = state.programs.filter((p) => p.status === "Active").slice(0, 6);
-  const events = state.events.filter((e) => e.status === "Upcoming").slice(0, 3);
-  const galleryPreview = state.gallery.slice(0, 6);
+  const programs = (state?.programs || seed.programs).filter((p) => p.status === "Active").slice(0, 6);
+  const events = (state?.events || seed.events).filter((e) => e.status === "Upcoming").slice(0, 3);
+  const galleryPreview = (state?.gallery || seed.gallery).slice(0, 6);
+  const stories = state?.stories || seed.stories || [];
+  const testimonials = state?.testimonials || seed.testimonials || [];
+  const stats = state?.stats || seed.stats || [];
+  const content = state?.content || seed.content;
+  const foundation = state?.foundation || seed.foundation;
 
   const values = [
     { title: "Compassion", desc: "Putting dignity, empathy, and humanity at the center of every community initiative.", icon: "heart" },
@@ -52,10 +58,10 @@ function Index() {
             <Icon name="heart" className="h-3.5 w-3.5 text-accent" /> Est. 2016 · Pune, Maharashtra
           </p>
           <h1 className="max-w-3xl text-5xl font-semibold leading-tight text-primary-foreground md:text-7xl">
-            {state.content.heroTitle}
+            {content.heroTitle}
           </h1>
-          <p className="mt-4 font-display text-2xl italic text-accent md:text-3xl">{state.content.heroSubtitle}</p>
-          <p className="mt-5 max-w-2xl text-lg text-primary-foreground/90">{state.content.heroText}</p>
+          <p className="mt-4 font-display text-2xl italic text-accent md:text-3xl">{content.heroSubtitle}</p>
+          <p className="mt-5 max-w-2xl text-lg text-primary-foreground/90">{content.heroText}</p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Link to="/donate" className="btn btn-accent shadow-lg hover:shadow-xl transition-all">
               <Icon name="heart" className="h-4 w-4" />Donate Now
@@ -70,7 +76,7 @@ function Index() {
       {/* Statistics Bar */}
       <section className="bg-gradient-soft border-b">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-6 py-12 md:grid-cols-4">
-          {state.stats.map((s) => (
+          {stats.map((s) => (
             <div key={s.label} className="text-center group">
               <p className="font-display text-4xl font-bold text-primary transition-transform duration-300 group-hover:scale-105 md:text-5xl">
                 <Counter value={s.value} suffix={s.suffix} />
@@ -91,7 +97,7 @@ function Index() {
                 <Icon name="target" className="h-6 w-6" />
               </div>
               <h3 className="text-2xl font-semibold">Our Mission</h3>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{state.content.mission}</p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{content.mission}</p>
             </div>
             <div className="mt-6 pt-4 border-t flex items-center justify-between text-xs text-primary font-bold uppercase tracking-wider">
               <span>Community First</span>
@@ -105,7 +111,7 @@ function Index() {
                 <Icon name="eye" className="h-6 w-6" />
               </div>
               <h3 className="text-2xl font-semibold">Our Vision</h3>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{state.content.vision}</p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{content.vision}</p>
             </div>
             <div className="mt-6 pt-4 border-t flex items-center justify-between text-xs text-accent-foreground font-bold uppercase tracking-wider">
               <span>Dignity For All</span>
@@ -182,7 +188,7 @@ function Index() {
       <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeading eyebrow="Real Transformation" title="Success Stories" text="Behind every number is a life forever changed." />
         <div className="grid gap-6 md:grid-cols-3">
-          {state.stories.map((s) => (
+          {stories.map((s) => (
             <div key={s.id} className="card-soft card-hover overflow-hidden flex flex-col">
               <img src={img(s.image)} alt={s.title} className="h-52 w-full object-cover" />
               <div className="p-6 flex-1 flex flex-col justify-between">
@@ -209,7 +215,7 @@ function Index() {
             <h2 className="mt-2 text-3xl font-semibold text-primary-foreground md:text-4xl">What People Say About Kranjal</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            {state.testimonials.map((t) => (
+            {testimonials.map((t) => (
               <div key={t.id} className="glass rounded-2xl p-6 flex flex-col justify-between">
                 <div>
                   <Icon name="quote" className="h-6 w-6 text-accent mb-3" />
@@ -239,7 +245,7 @@ function Index() {
           ))}
         </div>
         <div className="mt-8 text-center">
-          <Link to="/gallery" className="btn btn-outline btn-sm">View Full Gallery ({state.gallery.length} Photos)</Link>
+          <Link to="/gallery" className="btn btn-outline btn-sm">View Full Gallery ({(state?.gallery || seed.gallery).length} Photos)</Link>
         </div>
       </section>
 

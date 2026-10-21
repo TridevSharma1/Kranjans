@@ -16,6 +16,8 @@ const initial = {
   donations: seed.donations as Row[],
   volunteers: seed.volunteers as Row[],
   testimonials: seed.testimonials as Row[],
+  stories: seed.stories as Row[],
+  team: seed.team as { name: string; role: string }[],
   departments: seed.departments as Row[],
   designations: seed.designations as Row[],
   eventRegistrations: [] as Row[],
@@ -47,30 +49,52 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) setState({ ...initial, ...JSON.parse(raw) });
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        setState({
+          ...initial,
+          ...parsed,
+          stories: Array.isArray(parsed.stories) && parsed.stories.length ? parsed.stories : (seed.stories as Row[]),
+          team: Array.isArray(parsed.team) && parsed.team.length ? parsed.team : seed.team,
+        });
+      }
     } catch { /* ignore */ }
     setLoaded(true);
   }, []);
-  useEffect(() => { if (loaded) localStorage.setItem(KEY, JSON.stringify(state)); }, [state, loaded]);
+
+  useEffect(() => {
+    if (loaded) localStorage.setItem(KEY, JSON.stringify(state));
+  }, [state, loaded]);
 
   const log = (s: StoreState, text: string): Row[] =>
     [{ id: crypto.randomUUID(), text, time: "Just now" }, ...s.activities].slice(0, 12);
 
   const add = useCallback<Ctx["add"]>((c, item) => {
     const row = { ...item, id: item.id || crypto.randomUUID().slice(0, 8) } as Row;
-    setState((s) => ({ ...s, [c]: [row, ...(s[c] as Row[])], activities: c === "activities" ? s.activities : log(s, `New ${String(c).replace(/s$/, "")} added: ${row.name || row.title || row.number || row.donor || row.id}`) }));
+    setState((s) => ({
+      ...s,
+      [c]: [row, ...(s[c] as Row[])],
+      activities: c === "activities" ? s.activities : log(s, `New ${String(c).replace(/s$/, "")} added: ${row.name || row.title || row.number || row.donor || row.id}`)
+    }));
     return row;
   }, []);
+
   const update = useCallback<Ctx["update"]>((c, id, patch) => {
     setState((s) => ({ ...s, [c]: (s[c] as Row[]).map((r) => (r.id === id ? { ...r, ...patch } : r)) }));
   }, []);
+
   const remove = useCallback<Ctx["remove"]>((c, id) => {
     setState((s) => ({ ...s, [c]: (s[c] as Row[]).filter((r) => r.id !== id) }));
   }, []);
+
   const setSection = useCallback<Ctx["setSection"]>((k, v) => setState((s) => ({ ...s, [k]: v })), []);
   const reset = useCallback(() => setState(initial), []);
 
-  return <StoreCtx.Provider value={{ state, add, update, remove, setSection, reset }}>{children}</StoreCtx.Provider>;
+  return (
+    <StoreCtx.Provider value={{ state, add, update, remove, setSection, reset }}>
+      {children}
+    </StoreCtx.Provider>
+  );
 }
 
 export function useStore() {
@@ -78,6 +102,7 @@ export function useStore() {
   if (!ctx) throw new Error("useStore outside provider");
   return ctx;
 }
+
 export function useCollection(c: CollectionName) {
   const { state, add, update, remove } = useStore();
   return {

@@ -4,6 +4,7 @@ import { SiteLayout } from "@/layouts/SiteLayout";
 import { SectionHeading, Counter, PageHero } from "@/components/ui";
 import { Icon } from "@/components/Icon";
 import { useStore } from "@/context/StoreContext";
+import * as seed from "@/data/seed";
 import { img } from "@/utils/images";
 import hero from "@/assets/hero.jpg";
 
@@ -23,6 +24,9 @@ export const Route = createFileRoute("/impact")({
 
 function Impact() {
   const { state } = useStore();
+  const stats = state?.stats || seed.stats || [];
+  const stories = state?.stories || seed.stories || [];
+  const testimonials = state?.testimonials || seed.testimonials || [];
 
   return (
     <SiteLayout>
@@ -30,7 +34,7 @@ function Impact() {
 
       <section className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-          {state.stats.map((s) => (
+          {stats.map((s) => (
             <div key={s.label} className="card-soft p-8 text-center">
               <p className="font-display text-4xl font-bold text-primary md:text-5xl"><Counter value={s.value} suffix={s.suffix} /></p>
               <p className="mt-2 text-sm font-semibold uppercase tracking-wider text-muted-foreground">{s.label}</p>
@@ -43,7 +47,7 @@ function Impact() {
         <div className="mx-auto max-w-7xl px-6 py-20">
           <SectionHeading eyebrow="Stories of Change" title="Real People, Real Change" />
           <div className="grid gap-6 md:grid-cols-3">
-            {state.stories.map((s) => (
+            {stories.map((s) => (
               <div key={s.id} className="card-soft card-hover overflow-hidden">
                 <img src={img(s.image)} alt={s.title} className="h-48 w-full object-cover" />
                 <div className="p-6">
@@ -59,7 +63,7 @@ function Impact() {
       <section className="mx-auto max-w-7xl px-6 py-20">
         <SectionHeading eyebrow="In Their Words" title="Voices From the Field" />
         <div className="grid gap-6 md:grid-cols-3">
-          {state.testimonials.map((t) => (
+          {testimonials.map((t) => (
             <div key={t.id} className="card-soft card-hover p-8">
               <Icon name="quote" className="h-8 w-8 text-accent" />
               <p className="mt-4 text-muted-foreground">"{t.quote}"</p>
