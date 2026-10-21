@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as EventsRouteImport } from './routes/events'
@@ -20,9 +21,12 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProgramsRouteImport } from './routes/programs'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as UserRouteImport } from './routes/user'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
 import { Route as VerifyIdRouteImport } from './routes/verify-id'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
+import { Route as AdminLoginRouteImport } from './routes/admin_.login'
+import { Route as UserLoginRouteImport } from './routes/user_.login'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -32,6 +36,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -79,6 +88,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UserRoute = UserRouteImport.update({
+  id: '/user',
+  path: '/user',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VerifyCertificateRoute = VerifyCertificateRouteImport.update({
   id: '/verify-certificate',
   path: '/verify-certificate',
@@ -94,10 +108,21 @@ const VolunteerRoute = VolunteerRouteImport.update({
   path: '/volunteer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin_/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UserLoginRoute = UserLoginRouteImport.update({
+  id: '/user_/login',
+  path: '/user/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
@@ -107,13 +132,17 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/terms': typeof TermsRoute
+  '/user': typeof UserRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/verify-id': typeof VerifyIdRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/user/login': typeof UserLoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
@@ -123,14 +152,18 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/terms': typeof TermsRoute
+  '/user': typeof UserRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/verify-id': typeof VerifyIdRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/user/login': typeof UserLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
@@ -140,15 +173,19 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/terms': typeof TermsRoute
+  '/user': typeof UserRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/verify-id': typeof VerifyIdRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin_/login': typeof AdminLoginRoute
+  '/user_/login': typeof UserLoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/contact'
     | '/donate'
     | '/events'
@@ -158,13 +195,17 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/programs'
     | '/terms'
+    | '/user'
     | '/verify-certificate'
     | '/verify-id'
     | '/volunteer'
+    | '/admin/login'
+    | '/user/login'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/admin'
     | '/contact'
     | '/donate'
     | '/events'
@@ -174,13 +215,17 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/programs'
     | '/terms'
+    | '/user'
     | '/verify-certificate'
     | '/verify-id'
     | '/volunteer'
+    | '/admin/login'
+    | '/user/login'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/contact'
     | '/donate'
     | '/events'
@@ -190,14 +235,18 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/programs'
     | '/terms'
+    | '/user'
     | '/verify-certificate'
     | '/verify-id'
     | '/volunteer'
+    | '/admin_/login'
+    | '/user_/login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRoute
   ContactRoute: typeof ContactRoute
   DonateRoute: typeof DonateRoute
   EventsRoute: typeof EventsRoute
@@ -207,9 +256,12 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProgramsRoute: typeof ProgramsRoute
   TermsRoute: typeof TermsRoute
+  UserRoute: typeof UserRoute
   VerifyCertificateRoute: typeof VerifyCertificateRoute
   VerifyIdRoute: typeof VerifyIdRoute
   VolunteerRoute: typeof VolunteerRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  UserLoginRoute: typeof UserLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -226,6 +278,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -291,6 +350,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/user': {
+      id: '/user'
+      path: '/user'
+      fullPath: '/user'
+      preLoaderRoute: typeof UserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/verify-certificate': {
       id: '/verify-certificate'
       path: '/verify-certificate'
@@ -312,12 +378,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VolunteerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin_/login': {
+      id: '/admin_/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/user_/login': {
+      id: '/user_/login'
+      path: '/user/login'
+      fullPath: '/user/login'
+      preLoaderRoute: typeof UserLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRoute,
   ContactRoute: ContactRoute,
   DonateRoute: DonateRoute,
   EventsRoute: EventsRoute,
@@ -327,9 +408,12 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProgramsRoute: ProgramsRoute,
   TermsRoute: TermsRoute,
+  UserRoute: UserRoute,
   VerifyCertificateRoute: VerifyCertificateRoute,
   VerifyIdRoute: VerifyIdRoute,
   VolunteerRoute: VolunteerRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  UserLoginRoute: UserLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
