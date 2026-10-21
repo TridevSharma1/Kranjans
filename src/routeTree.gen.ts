@@ -33,8 +33,14 @@ import { Route as AdminDepartmentsRouteImport } from './routes/admin.departments
 import { Route as AdminDesignationsRouteImport } from './routes/admin.designations'
 import { Route as AdminDonationsRouteImport } from './routes/admin.donations'
 import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
+import { Route as AdminEventsRouteImport } from './routes/admin.events'
+import { Route as AdminGalleryRouteImport } from './routes/admin.gallery'
 import { Route as AdminIdCardsRouteImport } from './routes/admin.id-cards'
 import { Route as AdminLettersRouteImport } from './routes/admin.letters'
+import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
+import { Route as AdminProgramsRouteImport } from './routes/admin.programs'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminVolunteersRouteImport } from './routes/admin.volunteers'
 import { Route as AdminLoginRouteImport } from './routes/admin_.login'
 import { Route as UserIndexRouteImport } from './routes/user.index'
 import { Route as UserLoginRouteImport } from './routes/user_.login'
@@ -159,6 +165,16 @@ const AdminEmployeesRoute = AdminEmployeesRouteImport.update({
   path: '/employees',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminEventsRoute = AdminEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminGalleryRoute = AdminGalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminIdCardsRoute = AdminIdCardsRouteImport.update({
   id: '/id-cards',
   path: '/id-cards',
@@ -167,6 +183,26 @@ const AdminIdCardsRoute = AdminIdCardsRouteImport.update({
 const AdminLettersRoute = AdminLettersRouteImport.update({
   id: '/letters',
   path: '/letters',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMessagesRoute = AdminMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProgramsRoute = AdminProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminVolunteersRoute = AdminVolunteersRouteImport.update({
+  id: '/volunteers',
+  path: '/volunteers',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
@@ -209,8 +245,14 @@ export interface FileRoutesByFullPath {
   '/admin/designations': typeof AdminDesignationsRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/id-cards': typeof AdminIdCardsRoute
   '/admin/letters': typeof AdminLettersRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/programs': typeof AdminProgramsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/admin/volunteers': typeof AdminVolunteersRoute
   '/admin/login': typeof AdminLoginRoute
   '/user/login': typeof UserLoginRoute
   '/admin/': typeof AdminIndexRoute
@@ -238,8 +280,14 @@ export interface FileRoutesByTo {
   '/admin/designations': typeof AdminDesignationsRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/id-cards': typeof AdminIdCardsRoute
   '/admin/letters': typeof AdminLettersRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/programs': typeof AdminProgramsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/admin/volunteers': typeof AdminVolunteersRoute
   '/admin/login': typeof AdminLoginRoute
   '/user/login': typeof UserLoginRoute
   '/admin': typeof AdminIndexRoute
@@ -270,8 +318,14 @@ export interface FileRoutesById {
   '/admin/designations': typeof AdminDesignationsRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/gallery': typeof AdminGalleryRoute
   '/admin/id-cards': typeof AdminIdCardsRoute
   '/admin/letters': typeof AdminLettersRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/programs': typeof AdminProgramsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/admin/volunteers': typeof AdminVolunteersRoute
   '/admin_/login': typeof AdminLoginRoute
   '/user_/login': typeof UserLoginRoute
   '/admin/': typeof AdminIndexRoute
@@ -303,8 +357,14 @@ export interface FileRouteTypes {
     | '/admin/designations'
     | '/admin/donations'
     | '/admin/employees'
+    | '/admin/events'
+    | '/admin/gallery'
     | '/admin/id-cards'
     | '/admin/letters'
+    | '/admin/messages'
+    | '/admin/programs'
+    | '/admin/users'
+    | '/admin/volunteers'
     | '/admin/login'
     | '/user/login'
     | '/admin/'
@@ -332,8 +392,14 @@ export interface FileRouteTypes {
     | '/admin/designations'
     | '/admin/donations'
     | '/admin/employees'
+    | '/admin/events'
+    | '/admin/gallery'
     | '/admin/id-cards'
     | '/admin/letters'
+    | '/admin/messages'
+    | '/admin/programs'
+    | '/admin/users'
+    | '/admin/volunteers'
     | '/admin/login'
     | '/user/login'
     | '/admin'
@@ -363,8 +429,14 @@ export interface FileRouteTypes {
     | '/admin/designations'
     | '/admin/donations'
     | '/admin/employees'
+    | '/admin/events'
+    | '/admin/gallery'
     | '/admin/id-cards'
     | '/admin/letters'
+    | '/admin/messages'
+    | '/admin/programs'
+    | '/admin/users'
+    | '/admin/volunteers'
     | '/admin_/login'
     | '/user_/login'
     | '/admin/'
@@ -562,6 +634,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminEmployeesRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/events': {
+      id: '/admin/events'
+      path: '/events'
+      fullPath: '/admin/events'
+      preLoaderRoute: typeof AdminEventsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/gallery': {
+      id: '/admin/gallery'
+      path: '/gallery'
+      fullPath: '/admin/gallery'
+      preLoaderRoute: typeof AdminGalleryRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/id-cards': {
       id: '/admin/id-cards'
       path: '/id-cards'
@@ -574,6 +660,34 @@ declare module '@tanstack/react-router' {
       path: '/letters'
       fullPath: '/admin/letters'
       preLoaderRoute: typeof AdminLettersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/messages': {
+      id: '/admin/messages'
+      path: '/messages'
+      fullPath: '/admin/messages'
+      preLoaderRoute: typeof AdminMessagesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/programs': {
+      id: '/admin/programs'
+      path: '/programs'
+      fullPath: '/admin/programs'
+      preLoaderRoute: typeof AdminProgramsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/volunteers': {
+      id: '/admin/volunteers'
+      path: '/volunteers'
+      fullPath: '/admin/volunteers'
+      preLoaderRoute: typeof AdminVolunteersRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin_/login': {
@@ -608,8 +722,14 @@ interface AdminRouteChildren {
   AdminDesignationsRoute: typeof AdminDesignationsRoute
   AdminDonationsRoute: typeof AdminDonationsRoute
   AdminEmployeesRoute: typeof AdminEmployeesRoute
+  AdminEventsRoute: typeof AdminEventsRoute
+  AdminGalleryRoute: typeof AdminGalleryRoute
   AdminIdCardsRoute: typeof AdminIdCardsRoute
   AdminLettersRoute: typeof AdminLettersRoute
+  AdminMessagesRoute: typeof AdminMessagesRoute
+  AdminProgramsRoute: typeof AdminProgramsRoute
+  AdminUsersRoute: typeof AdminUsersRoute
+  AdminVolunteersRoute: typeof AdminVolunteersRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
@@ -621,8 +741,14 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminDesignationsRoute: AdminDesignationsRoute,
   AdminDonationsRoute: AdminDonationsRoute,
   AdminEmployeesRoute: AdminEmployeesRoute,
+  AdminEventsRoute: AdminEventsRoute,
+  AdminGalleryRoute: AdminGalleryRoute,
   AdminIdCardsRoute: AdminIdCardsRoute,
   AdminLettersRoute: AdminLettersRoute,
+  AdminMessagesRoute: AdminMessagesRoute,
+  AdminProgramsRoute: AdminProgramsRoute,
+  AdminUsersRoute: AdminUsersRoute,
+  AdminVolunteersRoute: AdminVolunteersRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
