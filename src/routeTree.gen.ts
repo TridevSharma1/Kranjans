@@ -25,7 +25,10 @@ import { Route as UserRouteImport } from './routes/user'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
 import { Route as VerifyIdRouteImport } from './routes/verify-id'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as AdminLoginRouteImport } from './routes/admin_.login'
+import { Route as UserIndexRouteImport } from './routes/user.index'
 import { Route as UserLoginRouteImport } from './routes/user_.login'
 
 const IndexRoute = IndexRouteImport.update({
@@ -108,10 +111,25 @@ const VolunteerRoute = VolunteerRouteImport.update({
   path: '/volunteer',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/admin_/login',
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
+} as any)
+const UserIndexRoute = UserIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => UserRoute,
 } as any)
 const UserLoginRoute = UserLoginRouteImport.update({
   id: '/user_/login',
@@ -122,7 +140,7 @@ const UserLoginRoute = UserLoginRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
@@ -132,17 +150,19 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/terms': typeof TermsRoute
-  '/user': typeof UserRoute
+  '/user': typeof UserRouteWithChildren
   '/verify-certificate': typeof VerifyCertificateRoute
   '/verify-id': typeof VerifyIdRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
   '/user/login': typeof UserLoginRoute
+  '/admin/': typeof AdminIndexRoute
+  '/user/': typeof UserIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
@@ -152,18 +172,20 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/terms': typeof TermsRoute
-  '/user': typeof UserRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/verify-id': typeof VerifyIdRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
   '/user/login': typeof UserLoginRoute
+  '/admin': typeof AdminIndexRoute
+  '/user': typeof UserIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/events': typeof EventsRoute
@@ -173,12 +195,15 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
   '/terms': typeof TermsRoute
-  '/user': typeof UserRoute
+  '/user': typeof UserRouteWithChildren
   '/verify-certificate': typeof VerifyCertificateRoute
   '/verify-id': typeof VerifyIdRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/admin_/login': typeof AdminLoginRoute
   '/user_/login': typeof UserLoginRoute
+  '/admin/': typeof AdminIndexRoute
+  '/user/': typeof UserIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -199,13 +224,15 @@ export interface FileRouteTypes {
     | '/verify-certificate'
     | '/verify-id'
     | '/volunteer'
+    | '/admin/dashboard'
     | '/admin/login'
     | '/user/login'
+    | '/admin/'
+    | '/user/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/admin'
     | '/contact'
     | '/donate'
     | '/events'
@@ -215,12 +242,14 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/programs'
     | '/terms'
-    | '/user'
     | '/verify-certificate'
     | '/verify-id'
     | '/volunteer'
+    | '/admin/dashboard'
     | '/admin/login'
     | '/user/login'
+    | '/admin'
+    | '/user'
   id:
     | '__root__'
     | '/'
@@ -239,14 +268,17 @@ export interface FileRouteTypes {
     | '/verify-certificate'
     | '/verify-id'
     | '/volunteer'
+    | '/admin/dashboard'
     | '/admin_/login'
     | '/user_/login'
+    | '/admin/'
+    | '/user/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   ContactRoute: typeof ContactRoute
   DonateRoute: typeof DonateRoute
   EventsRoute: typeof EventsRoute
@@ -256,7 +288,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProgramsRoute: typeof ProgramsRoute
   TermsRoute: typeof TermsRoute
-  UserRoute: typeof UserRoute
+  UserRoute: typeof UserRouteWithChildren
   VerifyCertificateRoute: typeof VerifyCertificateRoute
   VerifyIdRoute: typeof VerifyIdRoute
   VolunteerRoute: typeof VolunteerRoute
@@ -378,12 +410,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VolunteerRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin_/login': {
       id: '/admin_/login'
       path: '/admin/login'
       fullPath: '/admin/login'
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/user/': {
+      id: '/user/'
+      path: '/'
+      fullPath: '/user/'
+      preLoaderRoute: typeof UserIndexRouteImport
+      parentRoute: typeof UserRoute
     }
     '/user_/login': {
       id: '/user_/login'
@@ -395,10 +448,32 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AdminRouteChildren {
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface UserRouteChildren {
+  UserIndexRoute: typeof UserIndexRoute
+}
+
+const UserRouteChildren: UserRouteChildren = {
+  UserIndexRoute: UserIndexRoute,
+}
+
+const UserRouteWithChildren = UserRoute._addFileChildren(UserRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   ContactRoute: ContactRoute,
   DonateRoute: DonateRoute,
   EventsRoute: EventsRoute,
@@ -408,7 +483,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProgramsRoute: ProgramsRoute,
   TermsRoute: TermsRoute,
-  UserRoute: UserRoute,
+  UserRoute: UserRouteWithChildren,
   VerifyCertificateRoute: VerifyCertificateRoute,
   VerifyIdRoute: VerifyIdRoute,
   VolunteerRoute: VolunteerRoute,

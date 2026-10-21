@@ -22,7 +22,6 @@ function Dashboard() {
   const { state } = useStore();
   const ok = state.donations.filter((d) => d.status === "Success");
   const total = ok.reduce((s, d) => s + Number(d.amount), 0);
-  const maxRaised = Math.max(...state.campaigns.map((c) => Number(c.goal)), 1);
   const depts = state.departments.map((d) => ({ name: d.name, count: state.employees.filter((e) => e.department === d.name).length }));
   const maxDept = Math.max(...depts.map((d) => d.count), 1);
 
@@ -57,7 +56,6 @@ function Dashboard() {
               </div>
             ))}
           </div>
-          <span className="hidden">{maxRaised}</span>
         </div>
         <div className="space-y-6">
           <div className="card-soft p-6">
