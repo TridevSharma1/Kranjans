@@ -10,33 +10,579 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DonateRouteImport } from './routes/donate'
+import { Route as EventsRouteImport } from './routes/events'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as UserRouteImport } from './routes/user'
+import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
+import { Route as VerifyIdRouteImport } from './routes/verify-id'
+import { Route as VolunteerRouteImport } from './routes/volunteer'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminCampaignsRouteImport } from './routes/admin.campaigns'
+import { Route as AdminCertificatesRouteImport } from './routes/admin.certificates'
+import { Route as AdminContentRouteImport } from './routes/admin.content'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminDepartmentsRouteImport } from './routes/admin.departments'
+import { Route as AdminDesignationsRouteImport } from './routes/admin.designations'
+import { Route as AdminDonationsRouteImport } from './routes/admin.donations'
+import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
+import { Route as AdminEventsRouteImport } from './routes/admin.events'
+import { Route as AdminGalleryRouteImport } from './routes/admin.gallery'
+import { Route as AdminIdCardsRouteImport } from './routes/admin.id-cards'
+import { Route as AdminLettersRouteImport } from './routes/admin.letters'
+import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
+import { Route as AdminProfileRouteImport } from './routes/admin.profile'
+import { Route as AdminProgramsRouteImport } from './routes/admin.programs'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminVolunteersRouteImport } from './routes/admin.volunteers'
+import { Route as AdminLoginRouteImport } from './routes/admin_.login'
+import { Route as UserIndexRouteImport } from './routes/user.index'
+import { Route as UserCertificatesRouteImport } from './routes/user.certificates'
+import { Route as UserDashboardRouteImport } from './routes/user.dashboard'
+import { Route as UserDonationsRouteImport } from './routes/user.donations'
+import { Route as UserIdCardRouteImport } from './routes/user.id-card'
+import { Route as UserLetterRouteImport } from './routes/user.letter'
+import { Route as UserProfileRouteImport } from './routes/user.profile'
+import { Route as UserLoginRouteImport } from './routes/user_.login'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramsRoute = ProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UserRoute = UserRouteImport.update({
+  id: '/user',
+  path: '/user',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyCertificateRoute = VerifyCertificateRouteImport.update({
+  id: '/verify-certificate',
+  path: '/verify-certificate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyIdRoute = VerifyIdRouteImport.update({
+  id: '/verify-id',
+  path: '/verify-id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VolunteerRoute = VolunteerRouteImport.update({
+  id: '/volunteer',
+  path: '/volunteer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCampaignsRoute = AdminCampaignsRouteImport.update({
+  id: '/campaigns',
+  path: '/campaigns',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCertificatesRoute = AdminCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminContentRoute = AdminContentRouteImport.update({
+  id: '/content',
+  path: '/content',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDepartmentsRoute = AdminDepartmentsRouteImport.update({
+  id: '/departments',
+  path: '/departments',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDesignationsRoute = AdminDesignationsRouteImport.update({
+  id: '/designations',
+  path: '/designations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDonationsRoute = AdminDonationsRouteImport.update({
+  id: '/donations',
+  path: '/donations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEmployeesRoute = AdminEmployeesRouteImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEventsRoute = AdminEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminGalleryRoute = AdminGalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminIdCardsRoute = AdminIdCardsRouteImport.update({
+  id: '/id-cards',
+  path: '/id-cards',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLettersRoute = AdminLettersRouteImport.update({
+  id: '/letters',
+  path: '/letters',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminMessagesRoute = AdminMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProfileRoute = AdminProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProgramsRoute = AdminProgramsRouteImport.update({
+  id: '/programs',
+  path: '/programs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/users',
+  path: '/users',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminVolunteersRoute = AdminVolunteersRouteImport.update({
+  id: '/volunteers',
+  path: '/volunteers',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin_/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UserIndexRoute = UserIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserCertificatesRoute = UserCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserDashboardRoute = UserDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserDonationsRoute = UserDonationsRouteImport.update({
+  id: '/donations',
+  path: '/donations',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserIdCardRoute = UserIdCardRouteImport.update({
+  id: '/id-card',
+  path: '/id-card',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserLetterRoute = UserLetterRouteImport.update({
+  id: '/letter',
+  path: '/letter',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserProfileRoute = UserProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserLoginRoute = UserLoginRouteImport.update({
+  id: '/user_/login',
+  path: '/user/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
+  '/gallery': typeof GalleryRoute
+  '/impact': typeof ImpactRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/programs': typeof ProgramsRoute
+  '/register': typeof RegisterRoute
+  '/terms': typeof TermsRoute
+  '/user': typeof UserRouteWithChildren
+  '/verify-certificate': typeof VerifyCertificateRoute
+  '/verify-id': typeof VerifyIdRoute
+  '/volunteer': typeof VolunteerRoute
+  '/admin/campaigns': typeof AdminCampaignsRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/designations': typeof AdminDesignationsRoute
+  '/admin/donations': typeof AdminDonationsRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/id-cards': typeof AdminIdCardsRoute
+  '/admin/letters': typeof AdminLettersRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/programs': typeof AdminProgramsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/admin/volunteers': typeof AdminVolunteersRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/user/certificates': typeof UserCertificatesRoute
+  '/user/dashboard': typeof UserDashboardRoute
+  '/user/donations': typeof UserDonationsRoute
+  '/user/id-card': typeof UserIdCardRoute
+  '/user/letter': typeof UserLetterRoute
+  '/user/profile': typeof UserProfileRoute
+  '/user/login': typeof UserLoginRoute
+  '/admin/': typeof AdminIndexRoute
+  '/user/': typeof UserIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
+  '/gallery': typeof GalleryRoute
+  '/impact': typeof ImpactRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/programs': typeof ProgramsRoute
+  '/register': typeof RegisterRoute
+  '/terms': typeof TermsRoute
+  '/verify-certificate': typeof VerifyCertificateRoute
+  '/verify-id': typeof VerifyIdRoute
+  '/volunteer': typeof VolunteerRoute
+  '/admin/campaigns': typeof AdminCampaignsRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/designations': typeof AdminDesignationsRoute
+  '/admin/donations': typeof AdminDonationsRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/id-cards': typeof AdminIdCardsRoute
+  '/admin/letters': typeof AdminLettersRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/programs': typeof AdminProgramsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/admin/volunteers': typeof AdminVolunteersRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/user/certificates': typeof UserCertificatesRoute
+  '/user/dashboard': typeof UserDashboardRoute
+  '/user/donations': typeof UserDonationsRoute
+  '/user/id-card': typeof UserIdCardRoute
+  '/user/letter': typeof UserLetterRoute
+  '/user/profile': typeof UserProfileRoute
+  '/user/login': typeof UserLoginRoute
+  '/admin': typeof AdminIndexRoute
+  '/user': typeof UserIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/events': typeof EventsRoute
+  '/gallery': typeof GalleryRoute
+  '/impact': typeof ImpactRoute
+  '/login': typeof LoginRoute
+  '/privacy': typeof PrivacyRoute
+  '/programs': typeof ProgramsRoute
+  '/register': typeof RegisterRoute
+  '/terms': typeof TermsRoute
+  '/user': typeof UserRouteWithChildren
+  '/verify-certificate': typeof VerifyCertificateRoute
+  '/verify-id': typeof VerifyIdRoute
+  '/volunteer': typeof VolunteerRoute
+  '/admin/campaigns': typeof AdminCampaignsRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
+  '/admin/content': typeof AdminContentRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/designations': typeof AdminDesignationsRoute
+  '/admin/donations': typeof AdminDonationsRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/id-cards': typeof AdminIdCardsRoute
+  '/admin/letters': typeof AdminLettersRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/programs': typeof AdminProgramsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/users': typeof AdminUsersRoute
+  '/admin/volunteers': typeof AdminVolunteersRoute
+  '/admin_/login': typeof AdminLoginRoute
+  '/user/certificates': typeof UserCertificatesRoute
+  '/user/dashboard': typeof UserDashboardRoute
+  '/user/donations': typeof UserDonationsRoute
+  '/user/id-card': typeof UserIdCardRoute
+  '/user/letter': typeof UserLetterRoute
+  '/user/profile': typeof UserProfileRoute
+  '/user_/login': typeof UserLoginRoute
+  '/admin/': typeof AdminIndexRoute
+  '/user/': typeof UserIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/contact'
+    | '/donate'
+    | '/events'
+    | '/gallery'
+    | '/impact'
+    | '/login'
+    | '/privacy'
+    | '/programs'
+    | '/register'
+    | '/terms'
+    | '/user'
+    | '/verify-certificate'
+    | '/verify-id'
+    | '/volunteer'
+    | '/admin/campaigns'
+    | '/admin/certificates'
+    | '/admin/content'
+    | '/admin/dashboard'
+    | '/admin/departments'
+    | '/admin/designations'
+    | '/admin/donations'
+    | '/admin/employees'
+    | '/admin/events'
+    | '/admin/gallery'
+    | '/admin/id-cards'
+    | '/admin/letters'
+    | '/admin/messages'
+    | '/admin/profile'
+    | '/admin/programs'
+    | '/admin/settings'
+    | '/admin/users'
+    | '/admin/volunteers'
+    | '/admin/login'
+    | '/user/certificates'
+    | '/user/dashboard'
+    | '/user/donations'
+    | '/user/id-card'
+    | '/user/letter'
+    | '/user/profile'
+    | '/user/login'
+    | '/admin/'
+    | '/user/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/donate'
+    | '/events'
+    | '/gallery'
+    | '/impact'
+    | '/login'
+    | '/privacy'
+    | '/programs'
+    | '/register'
+    | '/terms'
+    | '/verify-certificate'
+    | '/verify-id'
+    | '/volunteer'
+    | '/admin/campaigns'
+    | '/admin/certificates'
+    | '/admin/content'
+    | '/admin/dashboard'
+    | '/admin/departments'
+    | '/admin/designations'
+    | '/admin/donations'
+    | '/admin/employees'
+    | '/admin/events'
+    | '/admin/gallery'
+    | '/admin/id-cards'
+    | '/admin/letters'
+    | '/admin/messages'
+    | '/admin/profile'
+    | '/admin/programs'
+    | '/admin/settings'
+    | '/admin/users'
+    | '/admin/volunteers'
+    | '/admin/login'
+    | '/user/certificates'
+    | '/user/dashboard'
+    | '/user/donations'
+    | '/user/id-card'
+    | '/user/letter'
+    | '/user/profile'
+    | '/user/login'
+    | '/admin'
+    | '/user'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/admin'
+    | '/contact'
+    | '/donate'
+    | '/events'
+    | '/gallery'
+    | '/impact'
+    | '/login'
+    | '/privacy'
+    | '/programs'
+    | '/register'
+    | '/terms'
+    | '/user'
+    | '/verify-certificate'
+    | '/verify-id'
+    | '/volunteer'
+    | '/admin/campaigns'
+    | '/admin/certificates'
+    | '/admin/content'
+    | '/admin/dashboard'
+    | '/admin/departments'
+    | '/admin/designations'
+    | '/admin/donations'
+    | '/admin/employees'
+    | '/admin/events'
+    | '/admin/gallery'
+    | '/admin/id-cards'
+    | '/admin/letters'
+    | '/admin/messages'
+    | '/admin/profile'
+    | '/admin/programs'
+    | '/admin/settings'
+    | '/admin/users'
+    | '/admin/volunteers'
+    | '/admin_/login'
+    | '/user/certificates'
+    | '/user/dashboard'
+    | '/user/donations'
+    | '/user/id-card'
+    | '/user/letter'
+    | '/user/profile'
+    | '/user_/login'
+    | '/admin/'
+    | '/user/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  DonateRoute: typeof DonateRoute
+  EventsRoute: typeof EventsRoute
+  GalleryRoute: typeof GalleryRoute
+  ImpactRoute: typeof ImpactRoute
+  LoginRoute: typeof LoginRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ProgramsRoute: typeof ProgramsRoute
+  RegisterRoute: typeof RegisterRoute
+  TermsRoute: typeof TermsRoute
+  UserRoute: typeof UserRouteWithChildren
+  VerifyCertificateRoute: typeof VerifyCertificateRoute
+  VerifyIdRoute: typeof VerifyIdRoute
+  VolunteerRoute: typeof VolunteerRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  UserLoginRoute: typeof UserLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +594,405 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/programs': {
+      id: '/programs'
+      path: '/programs'
+      fullPath: '/programs'
+      preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/user': {
+      id: '/user'
+      path: '/user'
+      fullPath: '/user'
+      preLoaderRoute: typeof UserRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify-certificate': {
+      id: '/verify-certificate'
+      path: '/verify-certificate'
+      fullPath: '/verify-certificate'
+      preLoaderRoute: typeof VerifyCertificateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify-id': {
+      id: '/verify-id'
+      path: '/verify-id'
+      fullPath: '/verify-id'
+      preLoaderRoute: typeof VerifyIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/volunteer': {
+      id: '/volunteer'
+      path: '/volunteer'
+      fullPath: '/volunteer'
+      preLoaderRoute: typeof VolunteerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/campaigns': {
+      id: '/admin/campaigns'
+      path: '/campaigns'
+      fullPath: '/admin/campaigns'
+      preLoaderRoute: typeof AdminCampaignsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/certificates': {
+      id: '/admin/certificates'
+      path: '/certificates'
+      fullPath: '/admin/certificates'
+      preLoaderRoute: typeof AdminCertificatesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/content': {
+      id: '/admin/content'
+      path: '/content'
+      fullPath: '/admin/content'
+      preLoaderRoute: typeof AdminContentRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/departments': {
+      id: '/admin/departments'
+      path: '/departments'
+      fullPath: '/admin/departments'
+      preLoaderRoute: typeof AdminDepartmentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/designations': {
+      id: '/admin/designations'
+      path: '/designations'
+      fullPath: '/admin/designations'
+      preLoaderRoute: typeof AdminDesignationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/donations': {
+      id: '/admin/donations'
+      path: '/donations'
+      fullPath: '/admin/donations'
+      preLoaderRoute: typeof AdminDonationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/employees': {
+      id: '/admin/employees'
+      path: '/employees'
+      fullPath: '/admin/employees'
+      preLoaderRoute: typeof AdminEmployeesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/events': {
+      id: '/admin/events'
+      path: '/events'
+      fullPath: '/admin/events'
+      preLoaderRoute: typeof AdminEventsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/gallery': {
+      id: '/admin/gallery'
+      path: '/gallery'
+      fullPath: '/admin/gallery'
+      preLoaderRoute: typeof AdminGalleryRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/id-cards': {
+      id: '/admin/id-cards'
+      path: '/id-cards'
+      fullPath: '/admin/id-cards'
+      preLoaderRoute: typeof AdminIdCardsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/letters': {
+      id: '/admin/letters'
+      path: '/letters'
+      fullPath: '/admin/letters'
+      preLoaderRoute: typeof AdminLettersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/messages': {
+      id: '/admin/messages'
+      path: '/messages'
+      fullPath: '/admin/messages'
+      preLoaderRoute: typeof AdminMessagesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/profile': {
+      id: '/admin/profile'
+      path: '/profile'
+      fullPath: '/admin/profile'
+      preLoaderRoute: typeof AdminProfileRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/programs': {
+      id: '/admin/programs'
+      path: '/programs'
+      fullPath: '/admin/programs'
+      preLoaderRoute: typeof AdminProgramsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/volunteers': {
+      id: '/admin/volunteers'
+      path: '/volunteers'
+      fullPath: '/admin/volunteers'
+      preLoaderRoute: typeof AdminVolunteersRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin_/login': {
+      id: '/admin_/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/user/': {
+      id: '/user/'
+      path: '/'
+      fullPath: '/user/'
+      preLoaderRoute: typeof UserIndexRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/certificates': {
+      id: '/user/certificates'
+      path: '/certificates'
+      fullPath: '/user/certificates'
+      preLoaderRoute: typeof UserCertificatesRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/dashboard': {
+      id: '/user/dashboard'
+      path: '/dashboard'
+      fullPath: '/user/dashboard'
+      preLoaderRoute: typeof UserDashboardRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/donations': {
+      id: '/user/donations'
+      path: '/donations'
+      fullPath: '/user/donations'
+      preLoaderRoute: typeof UserDonationsRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/id-card': {
+      id: '/user/id-card'
+      path: '/id-card'
+      fullPath: '/user/id-card'
+      preLoaderRoute: typeof UserIdCardRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/letter': {
+      id: '/user/letter'
+      path: '/letter'
+      fullPath: '/user/letter'
+      preLoaderRoute: typeof UserLetterRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/profile': {
+      id: '/user/profile'
+      path: '/profile'
+      fullPath: '/user/profile'
+      preLoaderRoute: typeof UserProfileRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user_/login': {
+      id: '/user_/login'
+      path: '/user/login'
+      fullPath: '/user/login'
+      preLoaderRoute: typeof UserLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AdminRouteChildren {
+  AdminCampaignsRoute: typeof AdminCampaignsRoute
+  AdminCertificatesRoute: typeof AdminCertificatesRoute
+  AdminContentRoute: typeof AdminContentRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminDepartmentsRoute: typeof AdminDepartmentsRoute
+  AdminDesignationsRoute: typeof AdminDesignationsRoute
+  AdminDonationsRoute: typeof AdminDonationsRoute
+  AdminEmployeesRoute: typeof AdminEmployeesRoute
+  AdminEventsRoute: typeof AdminEventsRoute
+  AdminGalleryRoute: typeof AdminGalleryRoute
+  AdminIdCardsRoute: typeof AdminIdCardsRoute
+  AdminLettersRoute: typeof AdminLettersRoute
+  AdminMessagesRoute: typeof AdminMessagesRoute
+  AdminProfileRoute: typeof AdminProfileRoute
+  AdminProgramsRoute: typeof AdminProgramsRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminUsersRoute: typeof AdminUsersRoute
+  AdminVolunteersRoute: typeof AdminVolunteersRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminCampaignsRoute: AdminCampaignsRoute,
+  AdminCertificatesRoute: AdminCertificatesRoute,
+  AdminContentRoute: AdminContentRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminDepartmentsRoute: AdminDepartmentsRoute,
+  AdminDesignationsRoute: AdminDesignationsRoute,
+  AdminDonationsRoute: AdminDonationsRoute,
+  AdminEmployeesRoute: AdminEmployeesRoute,
+  AdminEventsRoute: AdminEventsRoute,
+  AdminGalleryRoute: AdminGalleryRoute,
+  AdminIdCardsRoute: AdminIdCardsRoute,
+  AdminLettersRoute: AdminLettersRoute,
+  AdminMessagesRoute: AdminMessagesRoute,
+  AdminProfileRoute: AdminProfileRoute,
+  AdminProgramsRoute: AdminProgramsRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminUsersRoute: AdminUsersRoute,
+  AdminVolunteersRoute: AdminVolunteersRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+
+interface UserRouteChildren {
+  UserCertificatesRoute: typeof UserCertificatesRoute
+  UserDashboardRoute: typeof UserDashboardRoute
+  UserDonationsRoute: typeof UserDonationsRoute
+  UserIdCardRoute: typeof UserIdCardRoute
+  UserLetterRoute: typeof UserLetterRoute
+  UserProfileRoute: typeof UserProfileRoute
+  UserIndexRoute: typeof UserIndexRoute
+}
+
+const UserRouteChildren: UserRouteChildren = {
+  UserCertificatesRoute: UserCertificatesRoute,
+  UserDashboardRoute: UserDashboardRoute,
+  UserDonationsRoute: UserDonationsRoute,
+  UserIdCardRoute: UserIdCardRoute,
+  UserLetterRoute: UserLetterRoute,
+  UserProfileRoute: UserProfileRoute,
+  UserIndexRoute: UserIndexRoute,
+}
+
+const UserRouteWithChildren = UserRoute._addFileChildren(UserRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
+  ContactRoute: ContactRoute,
+  DonateRoute: DonateRoute,
+  EventsRoute: EventsRoute,
+  GalleryRoute: GalleryRoute,
+  ImpactRoute: ImpactRoute,
+  LoginRoute: LoginRoute,
+  PrivacyRoute: PrivacyRoute,
+  ProgramsRoute: ProgramsRoute,
+  RegisterRoute: RegisterRoute,
+  TermsRoute: TermsRoute,
+  UserRoute: UserRouteWithChildren,
+  VerifyCertificateRoute: VerifyCertificateRoute,
+  VerifyIdRoute: VerifyIdRoute,
+  VolunteerRoute: VolunteerRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  UserLoginRoute: UserLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
