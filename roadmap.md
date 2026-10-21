@@ -1,10 +1,8 @@
-# Roadmap — Complete Kranjal Foundation app
+# Roadmap — Kranjal Foundation app
 
-Source: github.com/TridevSharma1/pixel-perfect-replica (copied into project; scaffolding complete, routes missing).
-
-- [x] Copy repository source (src, public, assets) into project
-- [ ] Public site pages: /, /about, /programs, /impact, /events, /gallery, /volunteer, /contact
-- [ ] Action pages: /donate, /login, /verify-id, /verify-certificate, /privacy, /terms
-- [ ] Admin: /admin/login, /admin dashboard + CRUD pages (employees, users, programs, events, gallery, certificates, letters, campaigns, donations, volunteers, registrations, messages, settings)
-- [ ] Member portal: /user/dashboard
-- [ ] Verify build + routing tests + browser walkthrough
+- [x] Copy repository source into project
+- [x] Public site pages (home, about, programs, impact, events, gallery, volunteer, donate, contact, verify pages, privacy, terms)
+- [x] Login, register, forgot password, admin login (/admin/login), /user/login redirect
+- [x] Admin panel: dashboard + employees, departments, designations, ID cards, certificates, letters, donations (CSV), campaigns, events, programs, gallery, volunteers, messages, users, content, settings, profile
+- [x] Member portal: dashboard, profile, ID card, certificates, appointment letter, donations
+- [x] Verified with tests + browser walkthrough
