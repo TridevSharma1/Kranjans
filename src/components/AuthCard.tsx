@@ -6,10 +6,10 @@ import { useAuth } from "@/context/AuthContext";
 
 type Mode = "login" | "register" | "forgot";
 
-export function AuthCard({ role, allowRegister = false, demo }: { role: "admin" | "user"; allowRegister?: boolean; demo: string }) {
+export function AuthCard({ role, allowRegister = false, demo, initialMode = "login" }: { role: "admin" | "user"; allowRegister?: boolean; demo: string; initialMode?: Mode }) {
   const { login, register } = useAuth();
   const navigate = useNavigate();
-  const [mode, setMode] = useState<Mode>("login");
+  const [mode, setMode] = useState<Mode>(initialMode);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
 

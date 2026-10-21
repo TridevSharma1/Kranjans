@@ -46,6 +46,12 @@ import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminVolunteersRouteImport } from './routes/admin.volunteers'
 import { Route as AdminLoginRouteImport } from './routes/admin_.login'
 import { Route as UserIndexRouteImport } from './routes/user.index'
+import { Route as UserCertificatesRouteImport } from './routes/user.certificates'
+import { Route as UserDashboardRouteImport } from './routes/user.dashboard'
+import { Route as UserDonationsRouteImport } from './routes/user.donations'
+import { Route as UserIdCardRouteImport } from './routes/user.id-card'
+import { Route as UserLetterRouteImport } from './routes/user.letter'
+import { Route as UserProfileRouteImport } from './routes/user.profile'
 import { Route as UserLoginRouteImport } from './routes/user_.login'
 
 const IndexRoute = IndexRouteImport.update({
@@ -233,6 +239,36 @@ const UserIndexRoute = UserIndexRouteImport.update({
   path: '/',
   getParentRoute: () => UserRoute,
 } as any)
+const UserCertificatesRoute = UserCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserDashboardRoute = UserDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserDonationsRoute = UserDonationsRouteImport.update({
+  id: '/donations',
+  path: '/donations',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserIdCardRoute = UserIdCardRouteImport.update({
+  id: '/id-card',
+  path: '/id-card',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserLetterRoute = UserLetterRouteImport.update({
+  id: '/letter',
+  path: '/letter',
+  getParentRoute: () => UserRoute,
+} as any)
+const UserProfileRoute = UserProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => UserRoute,
+} as any)
 const UserLoginRoute = UserLoginRouteImport.update({
   id: '/user_/login',
   path: '/user/login',
@@ -275,6 +311,12 @@ export interface FileRoutesByFullPath {
   '/admin/users': typeof AdminUsersRoute
   '/admin/volunteers': typeof AdminVolunteersRoute
   '/admin/login': typeof AdminLoginRoute
+  '/user/certificates': typeof UserCertificatesRoute
+  '/user/dashboard': typeof UserDashboardRoute
+  '/user/donations': typeof UserDonationsRoute
+  '/user/id-card': typeof UserIdCardRoute
+  '/user/letter': typeof UserLetterRoute
+  '/user/profile': typeof UserProfileRoute
   '/user/login': typeof UserLoginRoute
   '/admin/': typeof AdminIndexRoute
   '/user/': typeof UserIndexRoute
@@ -313,6 +355,12 @@ export interface FileRoutesByTo {
   '/admin/users': typeof AdminUsersRoute
   '/admin/volunteers': typeof AdminVolunteersRoute
   '/admin/login': typeof AdminLoginRoute
+  '/user/certificates': typeof UserCertificatesRoute
+  '/user/dashboard': typeof UserDashboardRoute
+  '/user/donations': typeof UserDonationsRoute
+  '/user/id-card': typeof UserIdCardRoute
+  '/user/letter': typeof UserLetterRoute
+  '/user/profile': typeof UserProfileRoute
   '/user/login': typeof UserLoginRoute
   '/admin': typeof AdminIndexRoute
   '/user': typeof UserIndexRoute
@@ -354,6 +402,12 @@ export interface FileRoutesById {
   '/admin/users': typeof AdminUsersRoute
   '/admin/volunteers': typeof AdminVolunteersRoute
   '/admin_/login': typeof AdminLoginRoute
+  '/user/certificates': typeof UserCertificatesRoute
+  '/user/dashboard': typeof UserDashboardRoute
+  '/user/donations': typeof UserDonationsRoute
+  '/user/id-card': typeof UserIdCardRoute
+  '/user/letter': typeof UserLetterRoute
+  '/user/profile': typeof UserProfileRoute
   '/user_/login': typeof UserLoginRoute
   '/admin/': typeof AdminIndexRoute
   '/user/': typeof UserIndexRoute
@@ -396,6 +450,12 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/admin/volunteers'
     | '/admin/login'
+    | '/user/certificates'
+    | '/user/dashboard'
+    | '/user/donations'
+    | '/user/id-card'
+    | '/user/letter'
+    | '/user/profile'
     | '/user/login'
     | '/admin/'
     | '/user/'
@@ -434,6 +494,12 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/admin/volunteers'
     | '/admin/login'
+    | '/user/certificates'
+    | '/user/dashboard'
+    | '/user/donations'
+    | '/user/id-card'
+    | '/user/letter'
+    | '/user/profile'
     | '/user/login'
     | '/admin'
     | '/user'
@@ -474,6 +540,12 @@ export interface FileRouteTypes {
     | '/admin/users'
     | '/admin/volunteers'
     | '/admin_/login'
+    | '/user/certificates'
+    | '/user/dashboard'
+    | '/user/donations'
+    | '/user/id-card'
+    | '/user/letter'
+    | '/user/profile'
     | '/user_/login'
     | '/admin/'
     | '/user/'
@@ -761,6 +833,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UserIndexRouteImport
       parentRoute: typeof UserRoute
     }
+    '/user/certificates': {
+      id: '/user/certificates'
+      path: '/certificates'
+      fullPath: '/user/certificates'
+      preLoaderRoute: typeof UserCertificatesRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/dashboard': {
+      id: '/user/dashboard'
+      path: '/dashboard'
+      fullPath: '/user/dashboard'
+      preLoaderRoute: typeof UserDashboardRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/donations': {
+      id: '/user/donations'
+      path: '/donations'
+      fullPath: '/user/donations'
+      preLoaderRoute: typeof UserDonationsRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/id-card': {
+      id: '/user/id-card'
+      path: '/id-card'
+      fullPath: '/user/id-card'
+      preLoaderRoute: typeof UserIdCardRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/letter': {
+      id: '/user/letter'
+      path: '/letter'
+      fullPath: '/user/letter'
+      preLoaderRoute: typeof UserLetterRouteImport
+      parentRoute: typeof UserRoute
+    }
+    '/user/profile': {
+      id: '/user/profile'
+      path: '/profile'
+      fullPath: '/user/profile'
+      preLoaderRoute: typeof UserProfileRouteImport
+      parentRoute: typeof UserRoute
+    }
     '/user_/login': {
       id: '/user_/login'
       path: '/user/login'
@@ -818,10 +932,22 @@ const AdminRouteChildren: AdminRouteChildren = {
 const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 interface UserRouteChildren {
+  UserCertificatesRoute: typeof UserCertificatesRoute
+  UserDashboardRoute: typeof UserDashboardRoute
+  UserDonationsRoute: typeof UserDonationsRoute
+  UserIdCardRoute: typeof UserIdCardRoute
+  UserLetterRoute: typeof UserLetterRoute
+  UserProfileRoute: typeof UserProfileRoute
   UserIndexRoute: typeof UserIndexRoute
 }
 
 const UserRouteChildren: UserRouteChildren = {
+  UserCertificatesRoute: UserCertificatesRoute,
+  UserDashboardRoute: UserDashboardRoute,
+  UserDonationsRoute: UserDonationsRoute,
+  UserIdCardRoute: UserIdCardRoute,
+  UserLetterRoute: UserLetterRoute,
+  UserProfileRoute: UserProfileRoute,
   UserIndexRoute: UserIndexRoute,
 }
 
