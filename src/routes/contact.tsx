@@ -24,6 +24,7 @@ function Contact() {
   const { state, add } = useStore();
   const f = state.foundation;
   const [submitted, setSubmitted] = useState(false);
+  const [showCard, setShowCard] = useState(true);
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,6 +40,14 @@ function Contact() {
     });
     setSubmitted(true);
   };
+
+  const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(
+    f.name + " " + f.address
+  )}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+    f.name + ", " + f.address
+  )}`;
 
   return (
     <SiteLayout>
@@ -110,59 +119,112 @@ function Contact() {
         </div>
       </section>
 
-      {/* Google Map Placeholder Section */}
+      {/* Interactive Google Map Section */}
       <section className="mx-auto max-w-7xl px-6 pb-20">
-        <div className="card-soft overflow-hidden">
-          <div className="border-b p-4 flex flex-wrap items-center justify-between gap-3 bg-muted/30">
-            <div className="flex items-center gap-2">
-              <Icon name="pin" className="h-5 w-5 text-primary" />
-              <span className="font-semibold text-sm">Google Map Location · Kranjal Foundation Pune</span>
+        <div className="card-soft overflow-hidden shadow-lg border">
+          <div className="border-b px-5 py-4 flex flex-wrap items-center justify-between gap-3 bg-muted/40">
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-mint text-primary">
+                <Icon name="pin" className="h-4 w-4" />
+              </span>
+              <div>
+                <span className="font-bold text-sm text-foreground">Interactive Google Map</span>
+                <span className="hidden sm:inline-block ml-2 text-xs text-muted-foreground">· Pune, Maharashtra (586119)</span>
+              </div>
             </div>
-            <a
-              href="https://maps.google.com/?q=Pune,+Maharashtra"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-bold text-primary hover:underline inline-flex items-center gap-1"
-            >
-              Open in Google Maps <Icon name="arrow" className="h-3 w-3" />
-            </a>
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => setShowCard(!showCard)}
+                className="text-xs font-semibold text-muted-foreground hover:text-foreground hidden sm:inline-flex items-center gap-1"
+              >
+                {showCard ? "Hide Info Card" : "Show Info Card"}
+              </button>
+              <a
+                href={directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-accent btn-sm text-xs inline-flex items-center gap-1.5"
+              >
+                Open in Google Maps <Icon name="arrow" className="h-3 w-3" />
+              </a>
+            </div>
           </div>
 
-          <div className="relative h-80 w-full bg-slate-100 flex items-center justify-center overflow-hidden">
-            {/* Map styling grid & background */}
-            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#0f766e_1px,transparent_1px)] [background-size:16px_16px]" />
-            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-50/50 via-slate-100/30 to-teal-50/40" />
+          <div className="relative h-[420px] md:h-[480px] w-full bg-slate-100">
+            {/* Real Interactive Google Maps Iframe */}
+            <iframe
+              title={`${f.name} Location`}
+              src={mapEmbedUrl}
+              width="100%"
+              height="100%"
+              className="w-full h-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
 
-            {/* Stylized vector map elements */}
-            <svg className="absolute inset-0 h-full w-full opacity-30 stroke-slate-400" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0,100 Q300,120 600,80 T1200,140" fill="none" strokeWidth="8" stroke="#cbd5e1" />
-              <path d="M100,0 Q240,200 400,320" fill="none" strokeWidth="6" stroke="#e2e8f0" />
-              <path d="M500,0 Q600,180 850,320" fill="none" strokeWidth="10" stroke="#cbd5e1" />
-              <path d="M0,260 Q400,200 900,280" fill="none" strokeWidth="5" stroke="#94a3b8" />
-            </svg>
+            {/* Floating Info Card overlay */}
+            {showCard && (
+              <div className="absolute top-4 left-4 z-10 max-w-xs md:max-w-sm rounded-2xl bg-card/95 backdrop-blur-md p-5 shadow-2xl border transition-all animate-fade-in hidden sm:block">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-primary text-white shadow-md">
+                      <Icon name="pin" className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-base text-foreground leading-snug">{f.name}</h4>
+                      <p className="text-[11px] font-semibold text-primary uppercase tracking-wider">Head Office</p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowCard(false)}
+                    className="rounded-full p-1 text-muted-foreground hover:bg-muted"
+                    aria-label="Close"
+                  >
+                    <Icon name="x" className="h-4 w-4" />
+                  </button>
+                </div>
 
-            {/* Map Pin Box */}
-            <div className="relative z-10 flex flex-col items-center text-center p-6 bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border max-w-sm mx-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg animate-bounce">
-                <Icon name="pin" className="h-6 w-6" />
+                <div className="mt-3.5 space-y-2 text-xs text-muted-foreground border-t pt-3">
+                  <p className="flex items-start gap-2">
+                    <span className="font-medium text-foreground">Address:</span>
+                    <span>{f.address}</span>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <span className="font-medium text-foreground">Phone:</span>
+                    <a href={`tel:${f.phone}`} className="text-primary font-semibold hover:underline">
+                      {f.phone}
+                    </a>
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <span className="font-medium text-foreground">Email:</span>
+                    <a href={`mailto:${f.email}`} className="text-primary hover:underline truncate">
+                      {f.email}
+                    </a>
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3 border-t flex items-center justify-between gap-2">
+                  <a
+                    href={directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-sm text-xs flex-1 text-center"
+                  >
+                    Get Directions
+                  </a>
+                  <a
+                    href={`tel:${f.phone}`}
+                    className="btn btn-outline btn-sm text-xs px-3"
+                    title="Call Office"
+                  >
+                    <Icon name="phone" className="h-3.5 w-3.5" />
+                  </a>
+                </div>
               </div>
-              <h3 className="mt-3 font-bold text-base text-foreground">{f.name}</h3>
-              <p className="mt-1 text-xs text-muted-foreground">{f.address}</p>
-              <p className="mt-1 text-xs font-semibold text-primary">{f.phone}</p>
-              <div className="mt-4 flex gap-2">
-                <a
-                  href={`https://maps.google.com/?q=${encodeURIComponent(f.address)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary btn-sm text-xs"
-                >
-                  Get Directions
-                </a>
-                <span className="btn btn-ghost btn-sm text-xs pointer-events-none">
-                  Lat: 18.5204° N, Lon: 73.8567° E
-                </span>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </section>
