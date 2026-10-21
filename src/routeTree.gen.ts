@@ -26,7 +26,15 @@ import { Route as VerifyCertificateRouteImport } from './routes/verify-certifica
 import { Route as VerifyIdRouteImport } from './routes/verify-id'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminCampaignsRouteImport } from './routes/admin.campaigns'
+import { Route as AdminCertificatesRouteImport } from './routes/admin.certificates'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminDepartmentsRouteImport } from './routes/admin.departments'
+import { Route as AdminDesignationsRouteImport } from './routes/admin.designations'
+import { Route as AdminDonationsRouteImport } from './routes/admin.donations'
+import { Route as AdminEmployeesRouteImport } from './routes/admin.employees'
+import { Route as AdminIdCardsRouteImport } from './routes/admin.id-cards'
+import { Route as AdminLettersRouteImport } from './routes/admin.letters'
 import { Route as AdminLoginRouteImport } from './routes/admin_.login'
 import { Route as UserIndexRouteImport } from './routes/user.index'
 import { Route as UserLoginRouteImport } from './routes/user_.login'
@@ -116,9 +124,49 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminCampaignsRoute = AdminCampaignsRouteImport.update({
+  id: '/campaigns',
+  path: '/campaigns',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCertificatesRoute = AdminCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDepartmentsRoute = AdminDepartmentsRouteImport.update({
+  id: '/departments',
+  path: '/departments',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDesignationsRoute = AdminDesignationsRouteImport.update({
+  id: '/designations',
+  path: '/designations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminDonationsRoute = AdminDonationsRouteImport.update({
+  id: '/donations',
+  path: '/donations',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminEmployeesRoute = AdminEmployeesRouteImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminIdCardsRoute = AdminIdCardsRouteImport.update({
+  id: '/id-cards',
+  path: '/id-cards',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLettersRoute = AdminLettersRouteImport.update({
+  id: '/letters',
+  path: '/letters',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
@@ -154,7 +202,15 @@ export interface FileRoutesByFullPath {
   '/verify-certificate': typeof VerifyCertificateRoute
   '/verify-id': typeof VerifyIdRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/campaigns': typeof AdminCampaignsRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/designations': typeof AdminDesignationsRoute
+  '/admin/donations': typeof AdminDonationsRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/id-cards': typeof AdminIdCardsRoute
+  '/admin/letters': typeof AdminLettersRoute
   '/admin/login': typeof AdminLoginRoute
   '/user/login': typeof UserLoginRoute
   '/admin/': typeof AdminIndexRoute
@@ -175,7 +231,15 @@ export interface FileRoutesByTo {
   '/verify-certificate': typeof VerifyCertificateRoute
   '/verify-id': typeof VerifyIdRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/campaigns': typeof AdminCampaignsRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/designations': typeof AdminDesignationsRoute
+  '/admin/donations': typeof AdminDonationsRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/id-cards': typeof AdminIdCardsRoute
+  '/admin/letters': typeof AdminLettersRoute
   '/admin/login': typeof AdminLoginRoute
   '/user/login': typeof UserLoginRoute
   '/admin': typeof AdminIndexRoute
@@ -199,7 +263,15 @@ export interface FileRoutesById {
   '/verify-certificate': typeof VerifyCertificateRoute
   '/verify-id': typeof VerifyIdRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/campaigns': typeof AdminCampaignsRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/departments': typeof AdminDepartmentsRoute
+  '/admin/designations': typeof AdminDesignationsRoute
+  '/admin/donations': typeof AdminDonationsRoute
+  '/admin/employees': typeof AdminEmployeesRoute
+  '/admin/id-cards': typeof AdminIdCardsRoute
+  '/admin/letters': typeof AdminLettersRoute
   '/admin_/login': typeof AdminLoginRoute
   '/user_/login': typeof UserLoginRoute
   '/admin/': typeof AdminIndexRoute
@@ -224,7 +296,15 @@ export interface FileRouteTypes {
     | '/verify-certificate'
     | '/verify-id'
     | '/volunteer'
+    | '/admin/campaigns'
+    | '/admin/certificates'
     | '/admin/dashboard'
+    | '/admin/departments'
+    | '/admin/designations'
+    | '/admin/donations'
+    | '/admin/employees'
+    | '/admin/id-cards'
+    | '/admin/letters'
     | '/admin/login'
     | '/user/login'
     | '/admin/'
@@ -245,7 +325,15 @@ export interface FileRouteTypes {
     | '/verify-certificate'
     | '/verify-id'
     | '/volunteer'
+    | '/admin/campaigns'
+    | '/admin/certificates'
     | '/admin/dashboard'
+    | '/admin/departments'
+    | '/admin/designations'
+    | '/admin/donations'
+    | '/admin/employees'
+    | '/admin/id-cards'
+    | '/admin/letters'
     | '/admin/login'
     | '/user/login'
     | '/admin'
@@ -268,7 +356,15 @@ export interface FileRouteTypes {
     | '/verify-certificate'
     | '/verify-id'
     | '/volunteer'
+    | '/admin/campaigns'
+    | '/admin/certificates'
     | '/admin/dashboard'
+    | '/admin/departments'
+    | '/admin/designations'
+    | '/admin/donations'
+    | '/admin/employees'
+    | '/admin/id-cards'
+    | '/admin/letters'
     | '/admin_/login'
     | '/user_/login'
     | '/admin/'
@@ -417,11 +513,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/campaigns': {
+      id: '/admin/campaigns'
+      path: '/campaigns'
+      fullPath: '/admin/campaigns'
+      preLoaderRoute: typeof AdminCampaignsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/certificates': {
+      id: '/admin/certificates'
+      path: '/certificates'
+      fullPath: '/admin/certificates'
+      preLoaderRoute: typeof AdminCertificatesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/dashboard': {
       id: '/admin/dashboard'
       path: '/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/departments': {
+      id: '/admin/departments'
+      path: '/departments'
+      fullPath: '/admin/departments'
+      preLoaderRoute: typeof AdminDepartmentsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/designations': {
+      id: '/admin/designations'
+      path: '/designations'
+      fullPath: '/admin/designations'
+      preLoaderRoute: typeof AdminDesignationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/donations': {
+      id: '/admin/donations'
+      path: '/donations'
+      fullPath: '/admin/donations'
+      preLoaderRoute: typeof AdminDonationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/employees': {
+      id: '/admin/employees'
+      path: '/employees'
+      fullPath: '/admin/employees'
+      preLoaderRoute: typeof AdminEmployeesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/id-cards': {
+      id: '/admin/id-cards'
+      path: '/id-cards'
+      fullPath: '/admin/id-cards'
+      preLoaderRoute: typeof AdminIdCardsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/letters': {
+      id: '/admin/letters'
+      path: '/letters'
+      fullPath: '/admin/letters'
+      preLoaderRoute: typeof AdminLettersRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin_/login': {
@@ -449,12 +601,28 @@ declare module '@tanstack/react-router' {
 }
 
 interface AdminRouteChildren {
+  AdminCampaignsRoute: typeof AdminCampaignsRoute
+  AdminCertificatesRoute: typeof AdminCertificatesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminDepartmentsRoute: typeof AdminDepartmentsRoute
+  AdminDesignationsRoute: typeof AdminDesignationsRoute
+  AdminDonationsRoute: typeof AdminDonationsRoute
+  AdminEmployeesRoute: typeof AdminEmployeesRoute
+  AdminIdCardsRoute: typeof AdminIdCardsRoute
+  AdminLettersRoute: typeof AdminLettersRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminCampaignsRoute: AdminCampaignsRoute,
+  AdminCertificatesRoute: AdminCertificatesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminDepartmentsRoute: AdminDepartmentsRoute,
+  AdminDesignationsRoute: AdminDesignationsRoute,
+  AdminDonationsRoute: AdminDonationsRoute,
+  AdminEmployeesRoute: AdminEmployeesRoute,
+  AdminIdCardsRoute: AdminIdCardsRoute,
+  AdminLettersRoute: AdminLettersRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
