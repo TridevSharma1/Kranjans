@@ -20,6 +20,7 @@ import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ProgramsRouteImport } from './routes/programs'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as UserRouteImport } from './routes/user'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
@@ -107,6 +108,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const ProgramsRoute = ProgramsRouteImport.update({
   id: '/programs',
   path: '/programs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -287,6 +293,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
+  '/register': typeof RegisterRoute
   '/terms': typeof TermsRoute
   '/user': typeof UserRouteWithChildren
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -332,6 +339,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
+  '/register': typeof RegisterRoute
   '/terms': typeof TermsRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/verify-id': typeof VerifyIdRoute
@@ -378,6 +386,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/privacy': typeof PrivacyRoute
   '/programs': typeof ProgramsRoute
+  '/register': typeof RegisterRoute
   '/terms': typeof TermsRoute
   '/user': typeof UserRouteWithChildren
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -426,6 +435,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/privacy'
     | '/programs'
+    | '/register'
     | '/terms'
     | '/user'
     | '/verify-certificate'
@@ -471,6 +481,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/privacy'
     | '/programs'
+    | '/register'
     | '/terms'
     | '/verify-certificate'
     | '/verify-id'
@@ -516,6 +527,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/privacy'
     | '/programs'
+    | '/register'
     | '/terms'
     | '/user'
     | '/verify-certificate'
@@ -563,6 +575,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   PrivacyRoute: typeof PrivacyRoute
   ProgramsRoute: typeof ProgramsRoute
+  RegisterRoute: typeof RegisterRoute
   TermsRoute: typeof TermsRoute
   UserRoute: typeof UserRouteWithChildren
   VerifyCertificateRoute: typeof VerifyCertificateRoute
@@ -649,6 +662,13 @@ declare module '@tanstack/react-router' {
       path: '/programs'
       fullPath: '/programs'
       preLoaderRoute: typeof ProgramsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -965,6 +985,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   PrivacyRoute: PrivacyRoute,
   ProgramsRoute: ProgramsRoute,
+  RegisterRoute: RegisterRoute,
   TermsRoute: TermsRoute,
   UserRoute: UserRouteWithChildren,
   VerifyCertificateRoute: VerifyCertificateRoute,
